@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Score()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Score\r\n
+comment1.params=points
+comment1.target=void\ addScore(int)
+comment1.text=\r\n\ Este\ m\u00E9todo\ soma\ o\ n\u00FAmero\ de\ pontos\ ao\ score.\r\n\ \r\n\ @param\ \ points\ \ \ n\u00FAmero\ de\ pontos\ \r\n\ @return\ \ \ \ \ void\r\n
+comment2.params=points
+comment2.target=void\ subScore(int)
+comment2.text=\r\n\ Este\ m\u00E9todo\ subtrai\ o\ n\u00FAmero\ de\ pontos\ ao\ score.\r\n\ \r\n\ @param\ \ points\ \ \ n\u00FAmero\ de\ pontos\ \r\n\ @return\ \ \ \ \ void\r\n
+comment3.params=g
+comment3.target=void\ doDrawing(java.awt.Graphics)
+comment3.text=\r\n\ Este\ m\u00E9todo\ desenha\ o\ score\ \r\n\ \r\n\ @param\ \ Graphics\ g\ \ \ \ \r\n\ @return\ \ \ \ \ void\r\n
+comment4.params=g
+comment4.target=void\ paintComponent(java.awt.Graphics)
+comment4.text=\r\n\ Override\ do\ m\u00E9todo\ que\ pinta\ este\ componente,\ pois\ ele\ \u00E9\ um\ JPanel.\r\n\ \r\n\ @param\ \ Graphics\ g\ \ \ \ \r\n\ @return\ \ \ \ \ void\r\n
+numComments=5
