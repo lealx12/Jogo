@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ iniciar()
+comment0.text=\r\n\ Launch\ the\ application.\r\n
+comment1.params=
+comment1.target=void\ run()
+comment2.params=
+comment2.target=GameOver()
+comment2.text=\r\n\ Create\ the\ application.\r\n
+comment3.params=
+comment3.target=void\ initialize()
+comment3.text=\r\n\ Initialize\ the\ contents\ of\ the\ frame.\r\n
+comment4.params=arg0
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment5.params=arg0
+comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=6

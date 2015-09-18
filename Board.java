@@ -24,27 +24,36 @@ public class Board extends JPanel implements ActionListener {
 
     private int delay = 50;
     private String dirVilao;
-    
+    private String nick;
     private Vilao vilao;
+    private ArvoreVilao arvore2;
     private ArvoreVilao arvore;
-    
+    private Vilao vilao2;
+    private Vilao vilao3;
+    private ArvoreVilao arvore3;
     private Image food;
     private int food_x;
     private int food_y;
-
+    private boolean ver;
     private int widthGame = 720;
     private int heightGame = 520;
-
+    private boolean ver2;
     private boolean isPlaying = true;
     private Font font;
 
     int xP, yP, xP2,yP2;
-    public Board() {
+    public Board(String nick) {
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setIcon(new ImageIcon("images\\gameFundo.png"));
         lblNewLabel.setBounds(0, 0, 950, 600);
         add(lblNewLabel);
-
+        ver = false;
+        ver2 = false;
+        this.nick = nick;
+        vilao2 = new Vilao();
+        vilao3 = new Vilao();
+        arvore2 = new ArvoreVilao(principal, vilao2);
+        arvore3 = new ArvoreVilao(principal, vilao3);
         addKeyListener(new TAdapter());
         setFocusable(true);        
         setDoubleBuffered(true);
@@ -52,8 +61,9 @@ public class Board extends JPanel implements ActionListener {
         loadFoodImage();
         principal = new Principal();
         vilao = new Vilao();
-        score = new Score();
+        score = new Score(nick);
         arvore = new ArvoreVilao(principal,vilao);
+
         add(score);       
         showFood();
 
@@ -93,11 +103,18 @@ public class Board extends JPanel implements ActionListener {
             Principal aux = principal.getNext();
             g2d.drawImage(principal.getImage(),principal.getX(),principal.getY(),null);
             g2d.drawImage(vilao.getImage(), vilao.getX(), vilao.getY(), null);
-
+            if(ver){
+                 g2d.drawImage(vilao2.getImage(), vilao2.getX(), vilao2.getY(), null);
+            }
+            
+            if(ver2){
+                  g2d.drawImage(vilao3.getImage(), vilao3.getX(), vilao3.getY(), null);
+            }
         }
     }
 
     public void actionPerformed(ActionEvent e) {
+
         checkFood();
         checkCollision();
         xP = principal.getX();
@@ -105,8 +122,19 @@ public class Board extends JPanel implements ActionListener {
         principal.move();
         xP2 = principal.getX();
         yP2 = principal.getY();
+        if(score.getScore()  == 5 && !(ver)){
+            ver = true;
+        }else if(score.getScore() == 15 && !(ver2)){
+            ver2 = true;
+        }
         if(xP != xP2 || yP != yP2){
             moveVilao(vilao);
+            if(ver){
+              moveVilao(vilao2);
+            }
+            if(ver2){
+                moveVilao(vilao3);
+            }
         }
         repaint();  
     }
@@ -121,6 +149,7 @@ public class Board extends JPanel implements ActionListener {
             score.addScore(1);
             showFood();
         }
+
     }
 
     private void checkCollision(){
@@ -139,8 +168,17 @@ public class Board extends JPanel implements ActionListener {
         if(principal.getX() == vilao.getX() && principal.getY() == vilao.getY()){
             isPlaying = false;
         }
+        if(principal.getX() == vilao2.getX() && principal.getY() == vilao2.getY()){
+            isPlaying = false;
+        }
+        if(principal.getX() == vilao3.getX() && principal.getY() == vilao3.getY()){
+            isPlaying = false;
+        }
         if(!isPlaying){
+            GameOver over = new GameOver();
+            over.iniciar();
             timer.stop();
+
         }
     }
 
@@ -177,10 +215,11 @@ public class Board extends JPanel implements ActionListener {
         if(aux.getTp() == true){
             aux.setX(food_x);
             aux.setY(food_y);
-            vilao.move(aux);
+            _vilao.move(aux);
+            
         }else{
-            vilao.setDirection(aux.getDir());
-            vilao.move();
+            _vilao.setDirection(aux.getDir());
+            _vilao.move();
         }
     }
 

@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Board()
+comment0.params=nick
+comment0.target=Board(java.lang.String)
 comment1.params=g
 comment1.target=void\ paint(java.awt.Graphics)
 comment2.params=g

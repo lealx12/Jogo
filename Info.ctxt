@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ iniciar()
+comment1.params=
+comment1.target=void\ run()
+comment2.params=
+comment2.target=Info()
+comment3.params=
+comment3.target=void\ initialize()
+comment4.params=arg0
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5

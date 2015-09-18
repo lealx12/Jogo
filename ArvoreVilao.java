@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class ArvoreVilao here.
  * 
@@ -18,35 +17,41 @@ public class ArvoreVilao
         principal = _principal;
     }
 
-    public void inserir (Node _node){
+    public Node inserir (Node _node){
         int calculaX = 0;
         int calculaY = 0;
         int sorteado = (int) (Math.random() * 100);
         calculaX = Math.abs(vilao.getX() - principal.getX());
         calculaY = Math.abs(vilao.getY() - principal.getY());
+        
         if(calculaX <= calculaY){
             if(vilao.getX() <= principal.getX()){
                 _node.setDir("right");
+               
             }else{
                 _node.setDir("left");
+                
             }
         }else{
             if(vilao.getY() <= principal.getY()){
                 _node.setDir("down");
+               
             }else{
                 _node.setDir("up");
+                
             }
         }
-
+        
         if(raiz == null){
             raiz = _node;
-            atual = _node;
+            return atual = _node;
         }else{
-            inserirR(_node,raiz,sorteado);
+            return inserirR(_node,raiz,sorteado);
         }
+        
     }
 
-    private void inserirR(Node _node, Node raiz,int sorteado){
+    private Node inserirR(Node _node, Node raiz,int sorteado){
         Node aux = raiz;
 
         if(aux.getEsquerdo() == null){
@@ -54,18 +59,20 @@ public class ArvoreVilao
         }
         if(aux.getDireito() == null){
             aux.setDireito(_node); 
-        }else if(vilao.getX() < principal.getX()){
+        }else if(aux.getEsquerdo() != null && vilao.getX() < principal.getX()){
             aux = aux.getEsquerdo();
             inserirR(_node, aux,sorteado);
-        }else if(vilao.getX() > principal.getX()){
+        }else if(aux.getEsquerdo() != null && vilao.getX() >= principal.getX()){
             aux = aux.getDireito();
             inserirR(_node, aux,sorteado);
         }
 
-        if(sorteado < 0){
-            atual = aux.getEsquerdo();
+        if(sorteado < 5){
+            return atual = aux.getEsquerdo();
+            
         }else{
-            atual = aux.getDireito();
+            return atual = aux.getDireito();
+            
         }
     }
 

@@ -15,14 +15,19 @@ import java.io.File;
 public class Score extends JPanel
 {
     private int score;
+    private int nivel;
+    private int monstros;
     private Font font;
-    
+    private String nick;
     /**
      * Constructor for objects of class Score
      */
-    public Score()
+    public Score(String nick)
     {
         score = 0;
+        nivel = 1;
+        monstros = 1;
+        this.nick = nick;
     }
    
    
@@ -34,6 +39,10 @@ public class Score extends JPanel
      */
     public void addScore(int points){
         this.score = this.score + points;
+    }
+    
+    public int getScore(){
+        return score;
     }
     
     /**
@@ -64,7 +73,17 @@ public class Score extends JPanel
         }catch (Exception e){
             System.out.println(e.toString());
         }   
-        g2d.drawString("Score: " + this.score, 600, 50);
+        ImageIcon fundo = new ImageIcon("img/fundo/gameFundo.png");
+        g2d.drawImage(fundo.getImage(), 0, 0,null);
+        g2d.setFont(new Font("Century Gothic",1, 14));
+        g2d.setColor(new Color(255, 255, 255));
+        g2d.drawString(""+this.nivel, 868, 122);
+        g2d.drawString(""+this.score, 878, 150);
+        g2d.drawString(""+this.monstros, 888, 182);
+       
+        g2d.setFont(new Font("Century Gothic",1, 28));
+        g2d.setColor(new Color(255, 255, 255));
+        g2d.drawString(""+this.nick, 814, 34);
     }
 
     /**
